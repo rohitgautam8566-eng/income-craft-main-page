@@ -24,10 +24,10 @@ export default function SeatScarcity({ seats = 38 }: SeatScarcityProps) {
         </div>
       </div>
 
-      <div className={styles.progressBarContainer}>
+      <div className={styles.slotContainer}>
         <div
-          className={styles.progressBarFill}
-          style={{ width: `${progressPercentage}%`, transition: "width 0.8s ease-out" }}
+          className={`${styles.slotBar} slotBar`}
+          style={{ width: `${progressPercentage}%` }}
         ></div>
       </div>
 

@@ -252,42 +252,49 @@ export default function Home() {
 
   useEffect(() => {
     // --- Wistia Progress Bar Logic ---
-    (window as any)._wq = (window as any)._wq || [];
-    (window as any)._wq.push({
-      id: "p9oil32w2r",
-      onReady: function(video: any) {
-        video.bind("timechange", function(t: number) {
-          const duration = video.duration();
-          if (!duration) return;
+    const timer = setTimeout(() => {
+      const player = document.querySelector("wistia-player");
+      const bar = document.querySelector(".fakeBar") as HTMLElement;
 
-          let real = t / duration;
-          let fake;
+      if (!player || !bar) return;
 
-          // 🔥 Fast illusion at start
-          if (real < 0.15) {
-            fake = real * 2.5;
-          } else if (real < 0.5) {
-            fake = 0.375 + (real - 0.15) * 1.2;
-          } else {
-            fake = 0.8 + (real - 0.5) * 0.4;
-          }
+      let progress = 0;
+      let isPlaying = true;
+      let animationFrameId: number;
 
-          const final = Math.min(fake, 1);
+      function animate() {
+        if (!isPlaying) return;
 
-          if (progressRef.current) {
-            progressRef.current.style.width = final * 100 + "%";
-          }
-        });
+        let speed = progress < 30 ? 0.8 : progress < 70 ? 0.3 : 0.1;
 
-        // Sync on skip
-        video.bind("seek", function(t: number) {
-          const percent = (t / video.duration()) * 100;
-          if (progressRef.current) {
-            progressRef.current.style.width = percent + "%";
-          }
-        });
+        progress += speed;
+
+        if (progress > 100) progress = 100;
+
+        if (bar) {
+          bar.style.width = progress + "%";
+        }
+
+        animationFrameId = requestAnimationFrame(animate);
       }
-    });
+
+      animate();
+
+      player.addEventListener("play", () => {
+        isPlaying = true;
+        animate();
+      });
+
+      player.addEventListener("pause", () => {
+        isPlaying = false;
+      });
+      
+      return () => {
+        cancelAnimationFrame(animationFrameId);
+      };
+    }, 500);
+
+    return () => clearTimeout(timer);
 
     // 1. Initial Seat Randomization (37 or 38)
     const initialSeats = Math.random() > 0.5 ? 38 : 37;
@@ -424,8 +431,8 @@ export default function Home() {
                 })}
               </div>
 
-              <div className={styles.progressTrack}>
-                <div className={styles.progressFill} ref={progressRef}></div>
+              <div className={styles.fakeProgressContainer}>
+                <div className={`${styles.fakeBar} fakeBar`} ref={progressRef}></div>
               </div>
             </div>
           </div>
