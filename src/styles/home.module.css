@@ -298,23 +298,10 @@
   box-shadow: 0 0 0 2px rgba(46, 204, 113, 0.45), 0 40px 80px rgba(0, 0, 0, 0.6), 0 0 40px rgba(0, 255, 136, 0.1);
 }
 
-/* Custom Video Progress Bar */
-.fakeProgressContainer {
-  position: absolute;
-  bottom: 8px;
-  left: 5%;
-  width: 90%;
-  height: 6px;
-  background: rgba(255,255,255,0.2);
-  border-radius: 10px;
-  z-index: 999;
-}
-
-.fakeBar {
-  height: 100%;
-  width: 0%;
-  background: #00ff88;
-  border-radius: 10px;
+/* Native Video Sizing Support */
+.videoWrapper wistia-player {
+  width: 100%;
+  height: auto;
 }
 
 /* 5. Primary CTA */

@@ -241,7 +241,6 @@ const getRandomInt = (min: number, max: number) => Math.floor(Math.random() * (m
 
 
 export default function Home() {
-  const progressRef = useRef<HTMLDivElement>(null);
 
   // --- Scarcity Logic ---
   const [seatsClaimed, setSeatsClaimed] = useState(38);
@@ -251,50 +250,7 @@ export default function Home() {
   }>({ visible: false, data: null });
 
   useEffect(() => {
-    // --- Wistia Progress Bar Logic ---
-    const timer = setTimeout(() => {
-      const player = document.querySelector("wistia-player");
-      const bar = document.querySelector(".fakeBar") as HTMLElement;
 
-      if (!player || !bar) return;
-
-      let progress = 0;
-      let isPlaying = true;
-      let animationFrameId: number;
-
-      function animate() {
-        if (!isPlaying) return;
-
-        let speed = progress < 30 ? 0.8 : progress < 70 ? 0.3 : 0.1;
-
-        progress += speed;
-
-        if (progress > 100) progress = 100;
-
-        if (bar) {
-          bar.style.width = progress + "%";
-        }
-
-        animationFrameId = requestAnimationFrame(animate);
-      }
-
-      animate();
-
-      player.addEventListener("play", () => {
-        isPlaying = true;
-        animate();
-      });
-
-      player.addEventListener("pause", () => {
-        isPlaying = false;
-      });
-      
-      return () => {
-        cancelAnimationFrame(animationFrameId);
-      };
-    }, 500);
-
-    return () => clearTimeout(timer);
 
     // 1. Initial Seat Randomization (37 or 38)
     const initialSeats = Math.random() > 0.5 ? 38 : 37;
@@ -409,31 +365,24 @@ export default function Home() {
 
           <div className={`${styles.heroVideoWrapper} ${styles.animVideoReveal}`}>
             <div className={styles.videoWrapper}>
-              <div id="wistia-player-container" className="videoContainer" style={{ width: "100%", height: "100%", position: "relative" }}>
-                <script src="https://fast.wistia.com/player.js" async></script>
-                <script src="https://fast.wistia.com/embed/p9oil32w2r.js" async type="module"></script>
-                <style
-                  dangerouslySetInnerHTML={{
-                    __html: `
-                  wistia-player[media-id='p9oil32w2r']:not(:defined) {
-                    background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/p9oil32w2r/swatch');
-                    display: block;
-                    filter: blur(5px);
-                    padding-top: 56.25%;
-                  }
-                `,
-                  }}
-                />
-                {React.createElement("wistia-player", {
-                  "media-id": "p9oil32w2r",
-                  aspect: "1.7777777777777777",
-                  style: { width: "100%", height: "100%" },
-                })}
-              </div>
-
-              <div className={styles.fakeProgressContainer}>
-                <div className={`${styles.fakeBar} fakeBar`} ref={progressRef}></div>
-              </div>
+              <script src="https://fast.wistia.com/player.js" async></script>
+              <script src="https://fast.wistia.com/embed/p9oil32w2r.js" async type="module"></script>
+              <style
+                dangerouslySetInnerHTML={{
+                  __html: `
+                wistia-player[media-id='p9oil32w2r']:not(:defined) {
+                  background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/p9oil32w2r/swatch');
+                  display: block;
+                  filter: blur(5px);
+                  padding-top: 56.25%;
+                }
+              `,
+                }}
+              />
+              {React.createElement("wistia-player", {
+                "media-id": "p9oil32w2r",
+                aspect: "1.7777777777777777",
+              })}
             </div>
           </div>
 
