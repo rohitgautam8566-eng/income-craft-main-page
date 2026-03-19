@@ -39,9 +39,6 @@ export default function ProofSection() {
           {/* Card 1 - Video Testimonial 1 */}
           <div className={`${styles.proofCard} ${hasStarted ? styles.animIn : ""}`} style={{ animationDelay: "120ms" }}>
             <div className={styles.cardInner}>
-              <div className={styles.playOverlay}>
-                <Play fill="currentColor" size={24} />
-              </div>
               <script src="https://fast.wistia.com/player.js" async></script>
               <script src="https://fast.wistia.com/embed/uuxwdj34va.js" async type="module"></script>
               <style
@@ -59,6 +56,8 @@ export default function ProofSection() {
               {React.createElement("wistia-player", {
                 "media-id": "uuxwdj34va",
                 aspect: "1.7679558011049723",
+                playButton: false,
+                playbar: false
               })}
             </div>
             <div className={styles.cardTitle}>Client Result</div>
@@ -67,9 +66,6 @@ export default function ProofSection() {
           {/* Card 2 - Video Testimonial 2 (Vertical) */}
           <div className={`${styles.proofCard} ${hasStarted ? styles.animIn : ""}`} style={{ animationDelay: "240ms" }}>
             <div className={styles.cardInner}>
-              <div className={styles.playOverlay}>
-                <Play fill="currentColor" size={24} />
-              </div>
               <script src="https://fast.wistia.com/player.js" async></script>
               <script src="https://fast.wistia.com/embed/y1w94lcmuv.js" async type="module"></script>
               <style
@@ -87,6 +83,8 @@ export default function ProofSection() {
               {React.createElement("wistia-player", {
                 "media-id": "y1w94lcmuv",
                 aspect: "0.5616224648985959",
+                playButton: false,
+                playbar: false
               })}
             </div>
             <div className={styles.cardTitle}>Creator Testimonial</div>
@@ -95,9 +93,6 @@ export default function ProofSection() {
           {/* Card 3 - Video Testimonial 3 */}
           <div className={`${styles.proofCard} ${hasStarted ? styles.animIn : ""}`} style={{ animationDelay: "360ms" }}>
             <div className={styles.cardInner}>
-              <div className={styles.playOverlay}>
-                <Play fill="currentColor" size={24} />
-              </div>
               <script src="https://fast.wistia.com/player.js" async></script>
               <script src="https://fast.wistia.com/embed/ljqrjlpfi7.js" async type="module"></script>
               <style
@@ -115,6 +110,8 @@ export default function ProofSection() {
               {React.createElement("wistia-player", {
                 "media-id": "ljqrjlpfi7",
                 aspect: "1.7777777777777777",
+                playButton: false,
+                playbar: false
               })}
             </div>
             <div className={styles.cardTitle}>Client Result</div>
@@ -159,9 +156,6 @@ export default function ProofSection() {
           {/* Own Result 1 - Video Result */}
           <div className={`${styles.proofCard} ${hasStarted ? styles.animIn : ""}`} style={{ animationDelay: "120ms" }}>
             <div className={styles.cardInner}>
-              <div className={styles.playOverlay}>
-                <Play fill="currentColor" size={24} />
-              </div>
               <script src="https://fast.wistia.com/player.js" async></script>
               <script src="https://fast.wistia.com/embed/1mdci6nv79.js" async type="module"></script>
               <style
@@ -179,6 +173,8 @@ export default function ProofSection() {
               {React.createElement("wistia-player", {
                 "media-id": "1mdci6nv79",
                 aspect: "1.7679558011049723",
+                playButton: false,
+                playbar: false
               })}
             </div>
           </div>
@@ -186,9 +182,6 @@ export default function ProofSection() {
           {/* Own Result 2 - Vertical Video Result */}
           <div className={`${styles.proofCard} ${hasStarted ? styles.animIn : ""}`} style={{ animationDelay: "240ms" }}>
             <div className={styles.cardInner}>
-              <div className={styles.playOverlay}>
-                <Play fill="currentColor" size={24} />
-              </div>
               <script src="https://fast.wistia.com/player.js" async></script>
               <script src="https://fast.wistia.com/embed/974lix68d7.js" async type="module"></script>
               <style
@@ -206,6 +199,8 @@ export default function ProofSection() {
               {React.createElement("wistia-player", {
                 "media-id": "974lix68d7",
                 aspect: "0.5555555555555556",
+                playButton: false,
+                playbar: false
               })}
             </div>
           </div>
