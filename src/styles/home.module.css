@@ -236,7 +236,7 @@
   line-height: 1.2;
   letter-spacing: -0.02em;
   color: #fff;
-  margin-bottom: 24px;
+  margin-bottom: 24px !important;
   text-wrap: balance;
   max-width: 100%;
 }
@@ -266,7 +266,7 @@
   color: rgba(255, 255, 255, 0.75);
   max-width: 600px;
   line-height: 1.6;
-  margin: 0 auto 24px auto;
+  margin: 0 auto 40px auto !important; /* Forces a larger margin on desktop */
   opacity: 0.85;
 }
 
@@ -512,7 +512,7 @@
 
   .subheadlineHero {
     font-size: 16px;
-    margin-bottom: 20px; /* 20px spacing to video */
+    margin-bottom: 20px !important; /* 20px spacing to video */
   }
 
 
