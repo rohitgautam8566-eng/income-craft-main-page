@@ -9,6 +9,7 @@ import RecentPurchaseNotification, { type NotificationData } from "~/components/
 import PricingSection from "~/components/PricingSection";
 import ProofSection from "~/components/ProofSection";
 import SectionCTA from "~/components/SectionCTA";
+import SocialFooter from "~/components/SocialFooter";
 
 declare global {
   namespace JSX {
@@ -473,6 +474,7 @@ export default function Home() {
           </a>
         </div>
       </footer>
+      <SocialFooter />
       <RecentPurchaseNotification isVisible={notification.visible} data={notification.data} />
     </div>
   );
